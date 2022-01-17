@@ -1,5 +1,14 @@
 #!/bin/bash
 
+# This script has been authored by Simo Ahava.
+#
+# The script is heavily inspired by and based on Google's original work with the
+# App Engine shell script:
+# https://googletagmanager.com/static/serverjs/setup.sh
+#
+# Contributions to:
+# https://github.com/sahava/sgtm-cloud-run-shell/blob/main/cr-script.sh
+
 IMG_URL="gcr.io/cloud-tagging-10302018/gtm-cloud-image:stable"
 WISH_TO_CONTINUE="Do you wish to continue? (y/N): "
 WELCOME_TEXT=\
