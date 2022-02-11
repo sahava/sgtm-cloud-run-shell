@@ -269,12 +269,14 @@ deploy_production_server() {
     policy_script_url=""
   fi
   echo "Deploying the production service to ${service_prefix}-prod, press any key to begin..."
+  project_id=$(gcloud config list --format 'value(core.project)')
   read -n 1 -s
   prod_url=$(gcloud run deploy ${service_prefix}-prod --image=${IMG_URL}\
     --cpu=${cpu_limit} --allow-unauthenticated --min-instances=${min_instances}\
     --max-instances=${max_instances} --memory=${memory_limit} --region=${cur_region}\
     --set-env-vars POLICY_SCRIPT_URL=${policy_script_url}\
     --set-env-vars CONTAINER_CONFIG=${container_config}\
+    --set-env-vars GOOGLE_CLOUD_PROJECT=${project_id}\
     --set-env-vars PREVIEW_SERVER_URL=${debug_url} --format=json | jq -r '.status.url')
 }
 
